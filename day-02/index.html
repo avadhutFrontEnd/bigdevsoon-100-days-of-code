@@ -1,40 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <!-- Our unique tag to identify the solution -->
     <bds />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BigDevSoon Add To Bag challenge</title>
-
+    <!-- Merriweather from Google Fonts (works when opening file directly) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     <!-- TailwindCSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font-Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- CSS file link -->
+    <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body
-    class="bg-gray-900 flex flex-col items-center justify-center min-h-screen"
-  >
-    <div
-      class="bg-white text-gray-800 p-8 space-y-4 shadow rounded-xl max-w-md md:max-w-lg"
-    >
-      <!-- Logo and Title -->
+  <body>
+    <div class="product-details-card-container">
+      <!-- Images Containers -->
+      <div class="product-container">
+        <img
+          src="./assets/images/Rectangle 2 (1).png"
+          class="product-image"
+          style="border: 3px solid #1a75ff; border-radius: 8px"
+        />
+        <img src="./assets/images/Rectangle 2 (2).png" class="product-image" />
+        <img src="./assets/images/Rectangle 2 (3).png" class="product-image" />
+      </div>
+      <!-- Product image container -->
       <img
-        src="https://mqzzwgavxmdmqvivwgez.supabase.co/storage/v1/object/public/previews/logo-challenge-template.svg"
-        alt="BigDevSoon Logo"
-        class="w-150 mx-auto"
+        src="./assets/images/Rectangle 2.png"
+        class="product-image-container"
+        alt="Product Image"
       />
-      <h1 class="text-2xl font-bold text-center">Add To Bag challenge</h1>
-      <!-- Challenge Introduction -->
-      <p class="text">
-        The goal is to transform the provided design screenshot into a
-        functional, complete challenge.
-      </p>
-
-      <p class="text-sm border-t pt-6">
-        <strong>Tip</strong>: This example uses TailwindCSS for styling. Feel
-        free to integrate other libraries using their CDNs to enhance your
-        challenge.
-      </p>
+      <!-- product-details-container -->
+      <div class="product-details-container">
+        <p class="brand-name">Polo RalpH</p>
+        <p class="product-name">Custom Fit Polo Bear Oxford Shirt</p>
+        <p class="product-description">
+          Blue polo with a classic cut. Made of smooth and soft cotton.
+        </p>
+        <div class="product-pricing">
+          <h2 class="discount-pricing">$99.00</h2>
+          <div class="discount-bandage">-25%</div>
+        </div>
+        <p class="original-pricing">$132.00</p>
+        <div class="choose-size-buttons">
+          <label class="choose-size-label" for="">Choose size</label>
+          <div name="choose-size-buttons-container" id="">
+            <button class="choose-size-button" value="">S</button>
+            <button
+              class="choose-size-button"
+              style="background-color: black; color: white"
+              value=""
+            >
+              M
+            </button>
+            <button class="choose-size-button" value="">L</button>
+            <button class="choose-size-button" value="">XL</button>
+            <button class="choose-size-button" value="">XXL</button>
+          </div>
+          <button class="add-to-bag-button">ADD TO BAG</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

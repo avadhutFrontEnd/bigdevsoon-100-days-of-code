@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Fit Polo Bear Oxford Shirt – Polo Ralph Lauren</title>
+    <meta name="description" content="Blue polo with a classic cut. Made of smooth and soft cotton. Polo Ralph Lauren." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="product.css" />
+  </head>
+  <body>
+    <main class="pdp" role="main">
+      <article class="pdp__article">
+        <!-- Gallery: thumbnails + main image -->
+        <section class="pdp__gallery" aria-label="Product images">
+          <div class="pdp__thumbnails" role="list">
+            <button
+              type="button"
+              class="pdp__thumb pdp__thumb--active"
+              aria-label="View main product image"
+              aria-current="true"
+              data-index="0"
+            >
+              <img
+                src="./assets/images/Rectangle 2 (1).png"
+                alt=""
+                width="80"
+                height="104"
+                class="pdp__thumb-img"
+              />
+            </button>
+            <button
+              type="button"
+              class="pdp__thumb"
+              aria-label="View product image 2"
+              data-index="1"
+            >
+              <img
+                src="./assets/images/Rectangle 2 (2).png"
+                alt=""
+                width="80"
+                height="104"
+                class="pdp__thumb-img"
+              />
+            </button>
+            <button
+              type="button"
+              class="pdp__thumb"
+              aria-label="View product image 3"
+              data-index="2"
+            >
+              <img
+                src="./assets/images/Rectangle 2 (3).png"
+                alt=""
+                width="80"
+                height="104"
+                class="pdp__thumb-img"
+              />
+            </button>
+          </div>
+          <figure class="pdp__figure">
+            <img
+              src="./assets/images/Rectangle 2.png"
+              alt="Custom Fit Polo Bear Oxford Shirt in navy blue with light blue collar and cuffs"
+              width="494"
+              height="635"
+              class="pdp__main-img"
+              id="pdp-main-img"
+            />
+          </figure>
+        </section>
+
+        <!-- Product info -->
+        <section class="pdp__info">
+          <p class="pdp__brand">Polo Ralph</p>
+          <h1 class="pdp__title">Custom Fit Polo Bear Oxford Shirt</h1>
+          <p class="pdp__desc">Blue polo with a classic cut. Made of smooth and soft cotton.</p>
+
+          <div class="pdp__pricing">
+            <span class="pdp__price-current">$99.00</span>
+            <span class="pdp__badge" aria-label="25 percent off">-25%</span>
+          </div>
+          <p class="pdp__price-original">$132.00</p>
+
+          <form class="pdp__form" id="pdp-form" novalidate>
+            <fieldset class="pdp__sizes">
+              <legend class="pdp__sizes-legend">Choose size</legend>
+              <div class="pdp__sizes-list" role="group" aria-label="Size options">
+                <input
+                  type="radio"
+                  name="size"
+                  value="S"
+                  id="size-s"
+                  class="pdp__size-input visually-hidden"
+                />
+                <label for="size-s" class="pdp__size-label">S</label>
+                <input
+                  type="radio"
+                  name="size"
+                  value="M"
+                  id="size-m"
+                  class="pdp__size-input visually-hidden"
+                  checked
+                />
+                <label for="size-m" class="pdp__size-label">M</label>
+                <input
+                  type="radio"
+                  name="size"
+                  value="L"
+                  id="size-l"
+                  class="pdp__size-input visually-hidden"
+                />
+                <label for="size-l" class="pdp__size-label">L</label>
+                <input
+                  type="radio"
+                  name="size"
+                  value="XL"
+                  id="size-xl"
+                  class="pdp__size-input visually-hidden"
+                />
+                <label for="size-xl" class="pdp__size-label">XL</label>
+                <input
+                  type="radio"
+                  name="size"
+                  value="XXL"
+                  id="size-xxl"
+                  class="pdp__size-input visually-hidden"
+                />
+                <label for="size-xxl" class="pdp__size-label">XXL</label>
+              </div>
+            </fieldset>
+            <button type="submit" class="pdp__cta">Add to bag</button>
+          </form>
+        </section>
+      </article>
+    </main>
+    <script src="product.js" defer></script>
+  </body>
+</html>

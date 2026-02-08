@@ -1,0 +1,217 @@
+@font-face {
+  font-family: "Merriweather";
+  src: url("./assets/fonts/Merriweather-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./assets/fonts/Merriweather-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./assets/fonts/Merriweather-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./assets/fonts/Merriweather-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vh;
+  padding: 1rem;
+}
+
+/* product-details-card-container */
+.product-details-card-container {
+  font-family: "Merriweather", Georgia, serif;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1191px;
+  height: 635px;
+  display: flex;
+}
+
+.product-container {
+  width: 80px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: hidden;
+  margin-right: 24px;
+}
+
+.product-image {
+  width: 80px;
+  height: 104px;
+  /* border: 3px solid #1A75FF; */
+  /* border-radius: 8px; */
+  object-fit: cover;
+}
+
+.product-image-container {
+  width: 494px;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 56px;
+}
+
+.product-details-container {
+  width: 533px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: start;
+  margin-top: 28px;
+  line-height: 20px; /* Figma: Auto → 20px */
+  letter-spacing: 0;
+  color: #1a75ff;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: start;
+  margin-top: 16px;
+  line-height: 60px; /* Figma: Auto → 60px */
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.product-description {
+  font-size: 18px;
+  font-weight: 400; /* normal / regular */
+  text-align: start;
+  margin-top: 24px;
+  line-height: 23px; /* Figma: Auto → 23px */
+  letter-spacing: 0;
+  color: #000000;
+  opacity: 0.6; /* Figma: fill #000000 at 60% */
+}
+
+.product-pricing {
+  width: 100%;
+  height: 50px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.discount-pricing {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: start;
+  line-height: 50px; /* Figma: Auto → 50px */
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.discount-bandage {
+  width: 61px;
+  height: 31px;
+  padding: 4px;
+  background-color: #aaccff;
+  color: #1a75ff;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 23px; /* Figma: Auto → 23px */
+  letter-spacing: 0;
+}
+
+.original-pricing {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: start;
+  line-height: 23px; /* Figma: Auto → 23px */
+  letter-spacing: 0;
+  color: #000000;
+  opacity: 0.32;
+  text-decoration: line-through;
+}
+
+.choose-size-buttons {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 43px;
+}
+
+.choose-size-label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: start;
+  line-height: 20px; /* Figma: Auto → 20px */
+  letter-spacing: 0;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.choose-size-buttons-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 16px;
+}
+
+.choose-size-button {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  padding: 14px 0;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px; /* Figma: Auto → 20px */
+  letter-spacing: 0;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.add-to-bag-button {
+  width: 100%;
+  height: 55px;
+  border-radius: 4px;
+  background-color: #1a75ff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 23px; /* Figma: Auto → 23px */
+  letter-spacing: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+}

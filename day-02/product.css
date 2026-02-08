@@ -1,0 +1,420 @@
+/* ==========================================================================
+   PDP (Product Detail Page) – Senior approach
+   - Design tokens (custom properties)
+   - BEM-style naming: .pdp__block, .pdp__block--modifier
+   - Mobile-first responsive, fluid typography, accessibility
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design tokens (single source of truth for theme)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --pdp-color-primary: #1a75ff;
+  --pdp-color-primary-light: #aaccff;
+  --pdp-color-text: #000000;
+  --pdp-color-text-muted: rgba(0, 0, 0, 0.6);
+  --pdp-color-text-faded: rgba(0, 0, 0, 0.32);
+  --pdp-color-bg: #ffffff;
+  --pdp-color-bg-selected: #000000;
+  --pdp-color-border: #e5e5e5;
+
+  /* Typography */
+  --pdp-font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --pdp-font-sans: system-ui, -apple-system, sans-serif;
+
+  --pdp-text-brand: 0.875rem;      /* 14px */
+  --pdp-text-body: 1rem;          /* 16px */
+  --pdp-text-body-lg: 1.125rem;   /* 18px */
+  --pdp-text-title-sm: 1.5rem;    /* 24px */
+  --pdp-text-title: 2rem;         /* 32px */
+  --pdp-text-title-lg: 2.5rem;    /* 40px */
+  --pdp-text-hero: clamp(1.75rem, 4vw + 1rem, 3rem);   /* ~28–48px */
+  --pdp-text-price: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+
+  --pdp-line-tight: 1.25;
+  --pdp-line-normal: 1.4;
+  --pdp-line-relaxed: 1.5;
+
+  /* Spacing (8px base) */
+  --pdp-space-1: 0.25rem;   /* 4px */
+  --pdp-space-2: 0.5rem;   /* 8px */
+  --pdp-space-3: 0.75rem;  /* 12px */
+  --pdp-space-4: 1rem;     /* 16px */
+  --pdp-space-5: 1.25rem;  /* 20px */
+  --pdp-space-6: 1.5rem;   /* 24px */
+  --pdp-space-8: 2rem;     /* 32px */
+  --pdp-space-10: 2.5rem;  /* 40px */
+  --pdp-space-12: 3rem;    /* 48px */
+  --pdp-space-14: 3.5rem;  /* 56px */
+
+  /* Layout */
+  --pdp-radius: 4px;
+  --pdp-radius-lg: 8px;
+  --pdp-max-width: 75rem;   /* 1200px */
+  --pdp-gallery-gap: var(--pdp-space-6);
+  --pdp-info-max-width: 33.3125rem;  /* 533px */
+
+  /* Motion */
+  --pdp-duration: 0.2s;
+  --pdp-ease: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --pdp-duration: 0s;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base & utilities
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Page & layout
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--pdp-font-serif);
+  background-color: var(--pdp-color-bg);
+  color: var(--pdp-color-text);
+  line-height: var(--pdp-line-normal);
+  min-height: 100vh;
+  padding: var(--pdp-space-4);
+}
+
+.pdp {
+  width: 100%;
+  max-width: var(--pdp-max-width);
+  margin-inline: auto;
+}
+
+.pdp__article {
+  display: grid;
+  gap: var(--pdp-space-8);
+  align-items: start;
+}
+
+/* Desktop: gallery | info side by side */
+@media (min-width: 56.25rem) {
+  .pdp__article {
+    grid-template-columns: 1fr minmax(0, var(--pdp-info-max-width));
+    gap: var(--pdp-space-14);
+    min-height: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Gallery (thumbnails + main image)
+   -------------------------------------------------------------------------- */
+.pdp__gallery {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--pdp-gallery-gap);
+  align-items: start;
+}
+
+/* Mobile: stack thumbnails above main image or show as horizontal strip */
+@media (max-width: 35.99rem) {
+  .pdp__gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .pdp__thumbnails {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--pdp-space-2);
+  }
+
+  .pdp__thumb {
+    width: 56px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+
+  .pdp__thumb-img {
+    width: 56px;
+    height: 72px;
+  }
+}
+
+.pdp__thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pdp-space-6);
+  list-style: none;
+}
+
+.pdp__thumb {
+  display: block;
+  width: 80px;
+  height: 104px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--pdp-radius-lg);
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--pdp-duration) var(--pdp-ease),
+              opacity var(--pdp-duration) var(--pdp-ease);
+}
+
+.pdp__thumb:hover {
+  opacity: 0.9;
+}
+
+.pdp__thumb:focus-visible {
+  outline: 2px solid var(--pdp-color-primary);
+  outline-offset: 2px;
+}
+
+.pdp__thumb--active,
+.pdp__thumb[aria-current="true"] {
+  border-color: var(--pdp-color-primary);
+  opacity: 1;
+}
+
+.pdp__thumb:not(.pdp__thumb--active):not([aria-current="true"]) {
+  opacity: 0.7;
+}
+
+.pdp__thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.pdp__figure {
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: var(--pdp-radius-lg);
+  overflow: hidden;
+}
+
+.pdp__main-img {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  aspect-ratio: 494 / 635;
+}
+
+/* --------------------------------------------------------------------------
+   Product info
+   -------------------------------------------------------------------------- */
+.pdp__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 100%;
+}
+
+.pdp__brand {
+  font-size: var(--pdp-text-brand);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  color: var(--pdp-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--pdp-space-4);
+}
+
+.pdp__title {
+  font-size: var(--pdp-text-hero);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pdp-color-text);
+  margin-bottom: var(--pdp-space-6);
+}
+
+.pdp__desc {
+  font-size: var(--pdp-text-body-lg);
+  line-height: var(--pdp-line-relaxed);
+  color: var(--pdp-color-text-muted);
+  margin-bottom: var(--pdp-space-10);
+}
+
+.pdp__pricing {
+  display: flex;
+  align-items: center;
+  gap: var(--pdp-space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--pdp-space-2);
+}
+
+.pdp__price-current {
+  font-size: var(--pdp-text-price);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--pdp-color-text);
+}
+
+.pdp__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.8125rem;
+  padding: var(--pdp-space-1) var(--pdp-space-2);
+  font-size: var(--pdp-text-body-lg);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  color: var(--pdp-color-primary);
+  background-color: var(--pdp-color-primary-light);
+  border-radius: var(--pdp-radius);
+}
+
+.pdp__price-original {
+  font-size: var(--pdp-text-body-lg);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  color: var(--pdp-color-text-faded);
+  text-decoration: line-through;
+  margin-bottom: var(--pdp-space-10);
+}
+
+/* --------------------------------------------------------------------------
+   Size selector (radio + labels)
+   -------------------------------------------------------------------------- */
+.pdp__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pdp-space-5);
+}
+
+.pdp__sizes {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdp__sizes-legend {
+  font-size: var(--pdp-text-body);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  color: var(--pdp-color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--pdp-space-5);
+  padding: 0;
+}
+
+.pdp__sizes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pdp-space-4);
+}
+
+/* When focus is on the hidden radio, show ring on the visible label */
+.pdp__size-input:focus-visible + .pdp__size-label {
+  outline: 2px solid var(--pdp-color-primary);
+  outline-offset: 2px;
+}
+
+.pdp__size-input:checked + .pdp__size-label {
+  background-color: var(--pdp-color-bg-selected);
+  color: var(--pdp-color-bg);
+  border-color: var(--pdp-color-bg-selected);
+}
+
+.pdp__size-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0 var(--pdp-space-3);
+  font-size: var(--pdp-text-body);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  text-transform: uppercase;
+  color: var(--pdp-color-text);
+  background-color: var(--pdp-color-bg);
+  border: 2px solid var(--pdp-color-border);
+  border-radius: var(--pdp-radius);
+  cursor: pointer;
+  transition: background-color var(--pdp-duration) var(--pdp-ease),
+              color var(--pdp-duration) var(--pdp-ease),
+              border-color var(--pdp-duration) var(--pdp-ease);
+}
+
+.pdp__size-label:hover {
+  border-color: var(--pdp-color-text);
+}
+
+.pdp__size-label:focus-visible {
+  outline: 2px solid var(--pdp-color-primary);
+  outline-offset: 2px;
+}
+
+/* Touch targets: ensure at least 44px on touch devices */
+@media (pointer: coarse) {
+  .pdp__size-label {
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Add to bag CTA
+   -------------------------------------------------------------------------- */
+.pdp__cta {
+  width: 100%;
+  min-height: 3.4375rem;
+  padding: var(--pdp-space-4) var(--pdp-space-6);
+  font-family: var(--pdp-font-sans);
+  font-size: var(--pdp-text-body-lg);
+  font-weight: 700;
+  line-height: var(--pdp-line-tight);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pdp-color-bg);
+  background-color: var(--pdp-color-primary);
+  border: none;
+  border-radius: var(--pdp-radius);
+  cursor: pointer;
+  transition: background-color var(--pdp-duration) var(--pdp-ease),
+              transform var(--pdp-duration) var(--pdp-ease);
+}
+
+.pdp__cta:hover {
+  background-color: #1557d6;
+}
+
+.pdp__cta:active {
+  transform: scale(0.98);
+}
+
+.pdp__cta:focus-visible {
+  outline: 2px solid var(--pdp-color-primary);
+  outline-offset: 2px;
+}
+
+.pdp__cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

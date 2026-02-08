@@ -16,64 +16,23 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- TailwindCSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family:
-          "Roboto Flex",
-          -apple-system,
-          BlinkMacSystemFont,
-          sans-serif;
-      }
-
-      /* Smooth transitions for interactive elements */
-      button,
-      a {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      button:hover {
-        transform: translateY(-2px);
-      }
-
-      button:active {
-        transform: translateY(0);
-      }
-
-      .social-icon:hover {
-        transform: translateY(-3px);
-        opacity: 0.7;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body
-    class="bg-[#EFF3BF] flex flex-col items-center justify-center min-h-screen p-4"
-  >
-    <div
-      style="box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.25)"
-      class="bg-white pb-11 rounded-[64px] w-full max-w-[510px]"
-    >
+  <body>
+    <div class="profile-card">
       <!-- Header Section with Waves -->
-      <div class="h-[281px] relative pt-6">
+      <div class="card-header">
         <!-- Profile Image -->
         <img
           src="https://palmbeachrecoverycenters.com/wp-content/uploads/2023/12/good-faces-HT6AFKBcfVA-unsplash-681x1024.jpg"
           alt="Johnny Rogers"
-          class="w-[150px] h-[150px] object-cover rounded-full mx-auto relative z-50"
+          class="profile-image"
         />
 
         <!-- Base Background SVG -->
         <svg
-          class="absolute top-0 left-0 z-30"
+          class="wave-base"
           width="510"
           height="139"
           viewBox="0 0 510 139"
@@ -88,7 +47,7 @@
 
         <!-- Wave Layer 1 (Dark) -->
         <svg
-          class="absolute left-0 top-[113px] z-20"
+          class="wave-layer-1"
           width="510"
           height="167"
           viewBox="0 0 510 167"
@@ -103,7 +62,7 @@
 
         <!-- Wave Layer 2 (Pink) -->
         <svg
-          class="absolute left-0 z-10 top-[110.5px]"
+          class="wave-layer-2"
           width="510"
           height="170"
           viewBox="0 0 510 170"
@@ -118,7 +77,7 @@
 
         <!-- Wave Layer 3 (Gradient Overlay) -->
         <svg
-          class="absolute left-0 z-40 top-[109px]"
+          class="wave-layer-3"
           width="510"
           height="172"
           viewBox="0 0 510 172"
@@ -162,64 +121,50 @@
       </div>
 
       <!-- Content Section -->
-      <div class="px-12">
+      <div class="card-content">
         <!-- Name and Username -->
-        <h1 class="text-[38px] font-medium text-center mt-11 leading-tight">
-          Johnny Rogers
-        </h1>
-        <p class="text-base font-regular text-center mt-0.5 text-[#000]/60">
-          @jonnyrogers
-        </p>
+        <h1 class="profile-name">Johnny Rogers</h1>
+        <p class="profile-username">@jonnyrogers</p>
 
         <!-- Social Icons -->
-        <ul class="flex justify-center items-center my-11 gap-9">
+        <ul class="social-list">
           <li>
-            <a href="#" class="social-icon block">
+            <a href="#" class="social-icon">
               <i class="fa-brands fa-facebook fa-xl"></i>
             </a>
           </li>
           <li>
-            <a href="#" class="social-icon block">
+            <a href="#" class="social-icon">
               <i class="fa-brands fa-linkedin fa-xl"></i>
             </a>
           </li>
           <li>
-            <a href="#" class="social-icon block">
+            <a href="#" class="social-icon">
               <i class="fa-brands fa-x-twitter fa-xl"></i>
             </a>
           </li>
           <li>
-            <a href="#" class="social-icon block">
+            <a href="#" class="social-icon">
               <i class="fa-brands fa-instagram fa-xl"></i>
             </a>
           </li>
           <li>
-            <a href="#" class="social-icon block">
+            <a href="#" class="social-icon">
               <i class="fa-brands fa-dribbble fa-xl"></i>
             </a>
           </li>
         </ul>
 
         <!-- Bio Text -->
-        <p class="mb-[75px] text-center text-lg leading-[25px]">
+        <p class="profile-bio">
           Crafting brand and communication strategies, creating visual designs,
           leading art direction, and capturing portraits through photography.
         </p>
 
         <!-- Action Buttons -->
-        <div
-          class="flex gap-8 text-xl [&>*]:p-4 [&>*]:text-center [&>*]:rounded-full [&>*]:min-w-[191px] [&>*]:leading-[25px] [&>*]:tracking-[0.01em]"
-        >
-          <button
-            class="bg-[#DF3F8C] text-white hover:bg-[#C9367C] hover:shadow-lg"
-          >
-            Follow
-          </button>
-          <button
-            class="border border-[#838383] text-[#838383] hover:border-[#DF3F8C] hover:text-[#DF3F8C]"
-          >
-            Message
-          </button>
+        <div class="actions">
+          <button type="button" class="btn-follow">Follow</button>
+          <button type="button" class="btn-message">Message</button>
         </div>
       </div>
     </div>

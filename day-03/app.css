@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Mobile Navigation — Senior-level CSS
+   - Design tokens (custom properties)
+   - Mobile-first responsive layout
+   - Accessibility (focus, reduced motion, touch targets)
+   - No framework dependency
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS (single source of truth)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-bg-page: #e8ebf4;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #0c031d;
+  --color-text-secondary: rgba(12, 3, 29, 0.7);
+  --color-icon-bg: rgba(151, 161, 240, 0.24);
+  --color-icon-active: #4c5bd0;
+  --color-icon-muted: #d4d8f4;
+  --color-icon-profile: #7188d9;
+  --color-border: rgba(0, 0, 0, 0.16);
+  --color-focus-ring: #4c5bd0;
+  --color-hover-overlay: rgba(76, 91, 208, 0.08);
+
+  /* Typography scale (fluid with clamp) */
+  --font-family: "Source Sans Pro", system-ui, sans-serif;
+  --text-xs: clamp(0.75rem, 2vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 2.2vw, 1rem);
+  --text-base: clamp(1rem, 2.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 2.8vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 3vw, 1.5rem);
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.28;
+  --line-height-normal: 1.44;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+
+  /* Layout */
+  --card-radius: clamp(24px, 6vw, 40px);
+  --card-padding-x: clamp(1rem, 5vw, 1.25rem);
+  --card-padding-y: var(--space-10);
+  --card-padding-bottom: var(--space-12);
+  --avatar-size: clamp(56px, 15vw, 64px);
+  --icon-touch: 44px;   /* min touch target (WCAG) */
+  --icon-box: 40px;
+  --shadow-card: 0 4px 44px rgba(0, 0, 0, 0.25);
+  --max-width-mobile: 430px;
+  --min-height-viewport: 100dvh; /* dynamic viewport for mobile browsers */
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 220ms;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-page);
+  min-height: var(--min-height-viewport);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  /* Safe area for notched devices */
+  padding-left: max(var(--space-4), env(safe-area-inset-left));
+  padding-right: max(var(--space-4), env(safe-area-inset-right));
+}
+
+/* --------------------------------------------------------------------------
+   3. CARD LAYOUT (mobile-first, responsive)
+   -------------------------------------------------------------------------- */
+.app-card {
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  min-height: min(812px, 90dvh); /* cap height on large screens */
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  padding: var(--card-padding-y) var(--card-padding-x) var(--card-padding-bottom);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   4. HEADER (user profile strip)
+   -------------------------------------------------------------------------- */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-shrink: 0;
+}
+
+.app-header__avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+  background-color: var(--color-icon-bg);
+}
+
+.app-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.app-header__name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.app-header__role {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   5. DIVIDER
+   -------------------------------------------------------------------------- */
+.app-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-8) 0;
+  border: 0;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. MENU LIST (main navigation)
+   -------------------------------------------------------------------------- */
+.app-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-height: 0;
+}
+
+.app-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Menu item = clickable row with icon, label, arrow */
+.app-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-2) 0;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  /* Ensure min touch target */
+  min-height: var(--icon-touch);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-nav__link:hover {
+  background-color: var(--color-hover-overlay);
+}
+
+.app-nav__link:active {
+  background-color: rgba(76, 91, 208, 0.14);
+}
+
+/* Focus visible for keyboard users only */
+.app-nav__link:focus {
+  outline: none;
+}
+
+.app-nav__link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.app-nav__icon-wrap {
+  width: var(--icon-box);
+  height: var(--icon-box);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: var(--color-icon-bg);
+}
+
+.app-nav__icon-wrap svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-text-primary);
+}
+
+/* 24px icons for Personal Data & Settings */
+.app-nav__link[data-icon-size="large"] .app-nav__icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.app-nav__label {
+  flex: 1;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.app-nav__arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  opacity: 0.7;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.app-nav__link:hover .app-nav__arrow,
+.app-nav__link:focus-visible .app-nav__arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.app-nav__arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   7. BOTTOM BAR (tab-style navigation)
+   -------------------------------------------------------------------------- */
+.app-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-5);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  flex-shrink: 0;
+}
+
+.app-bottom__item {
+  width: var(--icon-touch);
+  height: var(--icon-touch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--color-icon-muted);
+  transition: color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-bottom__item:hover {
+  color: var(--color-icon-active);
+  background-color: var(--color-hover-overlay);
+}
+
+.app-bottom__item:focus {
+  outline: none;
+}
+
+.app-bottom__item:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Active state = Messages tab */
+.app-bottom__item--active {
+  color: var(--color-icon-active);
+}
+
+.app-bottom__item--active svg {
+  color: var(--color-icon-active);
+}
+
+.app-bottom__item--profile {
+  color: var(--color-icon-profile);
+}
+
+.app-bottom__item svg {
+  width: 28px;
+  height: 28px;
+  color: currentColor;
+}
+
+/* Home icon is 23x26, others 32x32 — center in touch area */
+.app-bottom__item svg {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE ADJUSTMENTS (wider screens)
+   -------------------------------------------------------------------------- */
+@media (min-width: 380px) {
+  .app-card {
+    min-height: min(812px, 85dvh);
+  }
+}
+
+@media (min-width: 480px) {
+  body {
+    padding: var(--space-6);
+  }
+}
+
+/* Optional: prevent card from stretching on very tall viewports */
+@media (min-height: 900px) {
+  .app-card {
+    min-height: 712px;
+  }
+}

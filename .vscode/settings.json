@@ -1,3 +1,17 @@
 {
-    "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "editor.tabCompletion": "on",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.quickSuggestionsDelay": 10,
+  "editor.wordBasedSuggestions": "matchingDocuments",
+  "html.autoClosingTags": true,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "html": "html"
+  }
 }

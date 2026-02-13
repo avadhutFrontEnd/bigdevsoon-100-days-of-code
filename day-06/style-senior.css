@@ -1,0 +1,243 @@
+/*
+  Image Carousel — Senior approach
+  - Design tokens (custom properties)
+  - Semantic layout, BEM-like naming
+  - Responsive: fluid spacing, aspect-ratio, clamp()
+  - Accessibility: focus-visible, reduced motion
+  - Effects: active thumbnail border, arrow hover/focus
+*/
+
+/* ============== Design tokens ============== */
+:root {
+  /* Colors */
+  --gallery-bg: #0c0c0c;
+  --gallery-main-border: rgba(255, 255, 255, 0.15);
+  --gallery-thumb-active-border: #ffffff;
+  --gallery-arrow-color: #ffffff;
+  --gallery-arrow-hover-bg: rgba(255, 255, 255, 0.12);
+  --gallery-arrow-focus-ring: rgba(255, 255, 255, 0.5);
+
+  /* Spacing (fluid with clamp for responsive) */
+  --stage-padding-block: clamp(2rem, 6vw, 6rem);
+  --stage-padding-inline: clamp(1rem, 4vw, 4rem);
+  --stage-gap: clamp(1rem, 3vw, 2rem);
+  --thumbs-gap: clamp(0.75rem, 2vw, 1.25rem);
+  --thumbs-padding-inline: clamp(1rem, 5vw, 3rem);
+  --thumbs-padding-block: clamp(1rem, 3vw, 1.5rem);
+
+  /* Sizing */
+  --main-image-max-width: min(1083px, 90vw);
+  --main-image-max-height: min(527px, 55vh);
+  --thumb-size: clamp(120px, 18vw, 235px);
+  --arrow-touch-target: 48px;
+  --thumb-active-border-width: 2px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01s;
+    --duration-normal: 0.01s;
+  }
+}
+
+/* ============== Base ============== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--gallery-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* ============== Gallery container ============== */
+.gallery {
+  width: 100%;
+  max-width: 1512px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ============== Main stage (image + arrows) ============== */
+.gallery__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--stage-gap);
+  width: 100%;
+  padding: var(--stage-padding-block) var(--stage-padding-inline);
+}
+
+.gallery__figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 0;
+}
+
+.gallery__main-image {
+  max-width: var(--main-image-max-width);
+  max-height: var(--main-image-max-height);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--gallery-main-border);
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+/* ============== Arrow buttons ============== */
+.gallery__arrow {
+  flex-shrink: 0;
+  width: var(--arrow-touch-target);
+  height: var(--arrow-touch-target);
+  min-width: var(--arrow-touch-target);
+  min-height: var(--arrow-touch-target);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--gallery-arrow-color);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.gallery__arrow:hover {
+  background-color: var(--gallery-arrow-hover-bg);
+}
+
+.gallery__arrow:active {
+  transform: scale(0.96);
+}
+
+.gallery__arrow:focus {
+  outline: none;
+}
+
+.gallery__arrow:focus-visible {
+  outline: 2px solid var(--gallery-arrow-focus-ring);
+  outline-offset: 2px;
+}
+
+.gallery__arrow-icon {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* ============== Thumbnail strip ============== */
+.gallery__thumbs {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--thumbs-padding-block) var(--thumbs-padding-inline);
+}
+
+.gallery__thumbs-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--thumbs-gap);
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-block: 4px; /* room for focus ring */
+}
+
+.gallery__thumbs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__thumbs-item {
+  flex-shrink: 0;
+}
+
+/* Thumbnail button */
+.gallery__thumb {
+  display: block;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  padding: 0;
+  border: var(--thumb-active-border-width) solid transparent;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out);
+}
+
+.gallery__thumb:hover {
+  opacity: 0.9;
+}
+
+.gallery__thumb:focus {
+  outline: none;
+}
+
+.gallery__thumb:focus-visible {
+  outline: 2px solid var(--gallery-arrow-focus-ring);
+  outline-offset: 2px;
+}
+
+.gallery__thumb--active,
+.gallery__thumb[aria-current="true"] {
+  border-color: var(--gallery-thumb-active-border);
+}
+
+.gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  vertical-align: middle;
+}
+
+/* ============== Responsive tweaks ============== */
+@media (max-width: 768px) {
+  .gallery__stage {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .gallery__arrow--prev {
+    order: 1;
+  }
+
+  .gallery__figure {
+    order: 0;
+  }
+
+  .gallery__arrow--next {
+    order: 2;
+  }
+}

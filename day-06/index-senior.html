@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Carousel — BigDevSoon</title>
+  <link rel="stylesheet" href="style-senior.css" />
+</head>
+
+<body>
+  <main class="gallery" role="main">
+    <!-- Main image stage with prev/next controls -->
+    <section class="gallery__stage" aria-label="Featured image">
+      <button
+        type="button"
+        class="gallery__arrow gallery__arrow--prev"
+        aria-label="Previous image"
+      >
+        <svg class="gallery__arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11.4375 18.75L4.6875 12L11.4375 5.25M5.625 12H19.3125" stroke="currentColor" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <figure class="gallery__figure">
+        <img
+          class="gallery__main-image"
+          src="./assets/images/vincent-van-zalinge-vUNQaTtZeOo-unsplash.jpg"
+          alt="Kingfisher bird perched on a branch"
+          width="1083"
+          height="527"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+
+      <button
+        type="button"
+        class="gallery__arrow gallery__arrow--next"
+        aria-label="Next image"
+      >
+        <svg class="gallery__arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12.5625 5.25L19.3125 12L12.5625 18.75M18.375 12L4.6875 12" stroke="currentColor" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </section>
+
+    <!-- Thumbnail strip: horizontal scroll, one active -->
+    <nav class="gallery__thumbs" aria-label="Image thumbnails">
+      <ul class="gallery__thumbs-list" role="list">
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb" aria-label="View image 1" data-index="0">
+            <img src="./assets/images/aaron-burden-yzgF-AQt1sQ-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb" aria-label="View image 2" data-index="1">
+            <img src="./assets/images/daniil-silantev-F6Da4r2x5to-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb gallery__thumb--active" aria-label="View image 3 (current)" aria-current="true" data-index="2">
+            <img src="./assets/images/vincent-van-zalinge-vUNQaTtZeOo-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb" aria-label="View image 4" data-index="3">
+            <img src="./assets/images/fabian-quintero-UWQP2mh5YJI-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb" aria-label="View image 5" data-index="4">
+            <img src="./assets/images/niko-photos-tGTVxeOr_Rs-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+        <li class="gallery__thumbs-item">
+          <button type="button" class="gallery__thumb" aria-label="View image 6" data-index="5">
+            <img src="./assets/images/qingbao-meng-01_igFr7hd4-unsplash.jpg" alt="" width="235" height="243" loading="lazy" decoding="async" />
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <script src="carousel.js" defer></script>
+</body>
+
+</html>

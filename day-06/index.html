@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Our unique tag to identify the solution -->
-    <bds />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BigDevSoon Image Carousel challenge</title>
 
-    <!-- TailwindCSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<head>
+  <!-- Our unique tag to identify the solution -->
+  <!-- <bds /> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BigDevSoon Image Carousel challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- image-carousel -->
 
-  <body
-    class="bg-gray-900 flex flex-col items-center justify-center min-h-screen"
-  >
-    <div
-      class="bg-white text-gray-800 p-8 space-y-4 shadow rounded-xl max-w-md md:max-w-lg"
-    >
-      <!-- Logo and Title -->
-      <img
-        src="https://mqzzwgavxmdmqvivwgez.supabase.co/storage/v1/object/public/previews/logo-challenge-template.svg"
-        alt="BigDevSoon Logo"
-        class="w-150 mx-auto"
-      />
-      <h1 class="text-2xl font-bold text-center">Image Carousel challenge</h1>
-      <!-- Challenge Introduction -->
-      <p class="text">
-        The goal is to transform the provided design screenshot into a
-        functional, complete challenge.
-      </p>
+<body>
+  <div class="app-layout">
+    <div class="image-carousel">
+      <div class="image-carousel-area">
+        <!-- left arrow -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.4375 18.75L4.6875 12L11.4375 5.25M5.625 12H19.3125" stroke="white" stroke-width="1.875"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <!-- main image -->
+        <img class="image-carousel-main-image" src="./assets/images/vincent-van-zalinge-vUNQaTtZeOo-unsplash.jpg"
+          alt="main image">
+        <!-- right arrow -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.5625 5.25L19.3125 12L12.5625 18.75M18.375 12L4.6875 12" stroke="white" stroke-width="1.875"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
 
-      <p class="text-sm border-t pt-6">
-        <strong>Tip</strong>: This example uses TailwindCSS for styling. Feel
-        free to integrate other libraries using their CDNs to enhance your
-        challenge.
-      </p>
+      </div>
     </div>
-  </body>
+    <div class="image-carousel-content">
+      <img class="image-carousel-content-area" src="./assets/images/aaron-burden-yzgF-AQt1sQ-unsplash.jpg"
+        alt="image 1">
+      <img class="image-carousel-content-area" src="./assets/images/daniil-silantev-F6Da4r2x5to-unsplash.jpg"
+        alt="image 1">
+      <img class="image-carousel-content-area" style="border: 1px solid #FFFFFF;"
+        src="./assets/images/vincent-van-zalinge-vUNQaTtZeOo-unsplash.jpg" alt="image 1">
+      <img class="image-carousel-content-area" src="./assets/images/fabian-quintero-UWQP2mh5YJI-unsplash.jpg"
+        alt="image 1">
+      <img class="image-carousel-content-area" src="./assets/images/niko-photos-tGTVxeOr_Rs-unsplash.jpg" alt="image 1">
+      <img class="image-carousel-content-area" src="./assets/images/qingbao-meng-01_igFr7hd4-unsplash.jpg"
+        alt="image 1">
+    </div>
+  </div>
+</body>
+
 </html>

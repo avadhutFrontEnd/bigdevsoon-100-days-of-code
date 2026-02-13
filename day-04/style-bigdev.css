@@ -1,0 +1,278 @@
+/*
+  BigDevSoon Contact Us – optimized for 1440×1080 comparison
+  Resolution used for comparison: 1440×1080
+*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(180deg, #482CE6 0%, #480022 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fixed frame for 1440×1080 – no scroll, exact comparison size */
+.frame {
+    width: 1440px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-image: url('./assets/images/Mask group.png');
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+/* Left: 55% */
+.left-side {
+    flex: 0 0 55%;
+    width: 55%;
+    height: 100%;
+}
+
+.route-text {
+    position: absolute;
+    left: 96px;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.route-text-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    font-weight: 600;
+    line-height: 66px;
+    letter-spacing: 0;
+    color: #FFFFFF;
+}
+
+.route-text-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    color: #FFFFFF;
+}
+
+.location-container {
+    position: absolute;
+    left: 74px;
+    top: 437px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location-details {
+    width: 483px;
+    padding: 16px;
+    background: #FF007A;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.location-details-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #FFFFFF;
+}
+
+.location-details-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.triangle-down-arrow {
+    width: 0;
+    height: 0;
+    border-left: 21px solid transparent;
+    border-right: 21px solid transparent;
+    border-top: 42px solid #FF007A;
+}
+
+.triangle-down-outer {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 0, 122, 0.20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangle-down-inner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 0, 122, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangle-down-center {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #FF007A;
+}
+
+/* Right: 45% */
+.right-side {
+    flex: 0 0 45%;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.form-container {
+    width: 565px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.form-container-input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 16px;
+    padding: 8px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    margin-bottom: 20px;
+}
+
+.form-container-input::placeholder {
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.form-container-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.60);
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.form-container-radio-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.form-container-radio-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-container-radio-button-input {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    accent-color: #482ADB;
+}
+
+.form-container-radio-button-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.form-container-textarea {
+    width: 100%;
+    height: 155px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 16px;
+    padding: 8px 10px;
+    resize: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.60);
+    margin-bottom: 85px;
+}
+
+.form-container-textarea::placeholder {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.form-container-button {
+    width: 100%;
+    height: 54px;
+    border: none;
+    border-radius: 100px;
+    background: #FF007A;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html = root element, wraps the whole page. Use for full-viewport behavior. */
+html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(to bottom, #482CE6, #480022);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* body = visible content area. Use for layout, font, and your design frame. */
+body {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    max-width: 1512px;
+    min-height: 982px;
+    height: 982px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/images/Mask group.png');
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.left-side {
+    flex: 0 0 55%;
+    width: 55%;
+    height: 100%;
+}
+
+.route-text {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 12px;
+    margin-left: 96px;
+    margin-top: 120px;
+}
+
+
+.route-text-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 66px;
+    letter-spacing: 0;
+}
+
+.route-text-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 33.6px;
+    letter-spacing: 0;
+}
+
+.location-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 172px 70px 0 74px;
+
+}
+
+.location-details {
+    width: 483px;
+    height: 92px;
+    background: #FF007A;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 12px;
+
+}
+
+.location-details-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 24px;
+    letter-spacing: 0;
+}
+
+.location-details-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 24px;
+    letter-spacing: 0;
+}
+
+/* Triangle: zero size + one colored border, others transparent */
+.triangle-down-arrow {
+    width: 0;
+    height: 0;
+    border-left: 21px solid transparent;
+    border-right: 21px solid transparent;
+    border-top: 42px solid #FF007A;  /* point-down = color top border */
+   
+}
+
+/* Same fill #FF007A, different visibility (opacity) per Figma */
+.triangle-down-outer {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 0, 122, 0.20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.triangle-down-inner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 0, 122, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangle-down-center {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #FF007A;
+}
+
+.right-side {
+    flex: 0 0 45%;
+    width: 45%;
+    height: 982px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    position: relative;
+    margin-left: 20px;
+}
+
+.form-container {
+    width: 565px;
+    height: 742px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    /* align-items: start;
+    justify-content: start;
+    gap: 24px; */
+}
+
+.form-container-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    /* min-block-size: 24px; */
+    margin-bottom: 24px;
+}
+
+.form-container-input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 16px;
+    padding: 8px 16px 8px 16px;
+    font-size: 17px;    
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    margin-bottom: 20px;
+}
+
+.form-container-subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    line-height: 33.6px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+.form-container-radio-buttons {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.form-container-radio-button {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 4px;
+    padding: 8px 0 8px 0;
+}
+
+.form-container-radio-button-input {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    /* border: 1px solid #482ADB; */
+    padding: 4.5px;
+    /* Colors the circle and the checked dot */
+    accent-color: #482ADB;
+}
+
+.form-container-radio-button-label {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    line-height: 33.6px;
+    letter-spacing: 0;
+}
+
+.form-container-textarea {
+    width: 100%; 
+    height: 155px; 
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 16px;
+    padding: 8px 10px 8px 10px;
+    resize: none;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    line-height: 33.6px;
+    letter-spacing: 0;
+    margin-bottom: 85px;
+}
+
+.form-container-textarea::placeholder {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.60);
+    line-height: 33.6px;
+    letter-spacing: 0;
+}
+
+.form-container-button {
+    width: 100%;
+    height: 54px;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 100px;
+    border: none;
+    background: #FF007A;
+    color: #FFFFFF;
+    
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: 0;
+}

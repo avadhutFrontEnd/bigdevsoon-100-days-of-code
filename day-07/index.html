@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Our unique tag to identify the solution -->
-    <bds />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BigDevSoon Create Account challenge</title>
 
-    <!-- TailwindCSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<head>
+  <!-- Our unique tag to identify the solution -->
+  <!-- <bds /> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BigDevSoon Create Account challenge</title>
 
-  <body
-    class="bg-gray-900 flex flex-col items-center justify-center min-h-screen"
-  >
-    <div
-      class="bg-white text-gray-800 p-8 space-y-4 shadow rounded-xl max-w-md md:max-w-lg"
-    >
-      <!-- Logo and Title -->
-      <img
-        src="https://mqzzwgavxmdmqvivwgez.supabase.co/storage/v1/object/public/previews/logo-challenge-template.svg"
-        alt="BigDevSoon Logo"
-        class="w-150 mx-auto"
-      />
-      <h1 class="text-2xl font-bold text-center">Create Account challenge</h1>
-      <!-- Challenge Introduction -->
-      <p class="text">
-        The goal is to transform the provided design screenshot into a
-        functional, complete challenge.
-      </p>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <p class="text-sm border-t pt-6">
-        <strong>Tip</strong>: This example uses TailwindCSS for styling. Feel
-        free to integrate other libraries using their CDNs to enhance your
-        challenge.
-      </p>
+<body>
+  <div class="app-layout">
+    <div class="content-area">
+      <p class="start-for-free-text">Start for free</p>
+      <h1 class="create-new-account-text">Create new account</h1>
+      <form class="form">
+        <div class="form-group-items-horizontal">
+          <div class="form-group-items">
+            <div class="form-group-items-content">
+              <label class="name-label" for="first-name">First Name</label>
+              <input class="name-input" type="text" id="first-name" name="first-name" placeholder="John">
+            </div>
+            <img src="./assets/icons/bxs_id-card.png" alt="" srcset="">
+          </div>
+          <div class="form-group-items">
+            <div class="form-group-items-content">
+              <label class="name-label" for="last-name">Last Name</label>
+              <input class="name-input" type="text" id="last-name" name="last-name" placeholder="Doe">
+            </div>
+            <img src="./assets/icons/bxs_id-card.png" alt="" srcset="">
+          </div>
+        </div>
+        <div class="form-group-items-vertical">
+          <div class="form-group-items" style="width: 100%;">
+            <div class="form-group-items-content">
+              <label class="name-label" for="email">Email</label>
+              <input class="name-input" type="email" id="email" name="email" placeholder="john.doe@example.com">
+            </div>
+            <img src="./assets/icons/ic_round-email.png" alt="" srcset="">
+          </div>
+          <div class="form-group-items"  style="width: 100%;">
+            <div class="form-group-items-content">
+              <label class="name-label" for="password">Password</label>
+              <input class="name-input" type="password" id="password" name="password" placeholder="Enter your password" value="1234567890">
+            </div>
+            <img src="./assets/icons/iconamoon_eye-fill.png" alt="" srcset="">
+          </div>
+           
+        </div>
+        <p class="already-have-an-account-text">Already have an account? <span class="sign-in-text">Sign In</span> </p>
+        <button type="submit" class="sign-in-button">Create account</button>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

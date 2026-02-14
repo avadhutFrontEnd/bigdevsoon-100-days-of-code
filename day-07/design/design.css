@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Create new account — Design system & layout
+   Viewport target: 1440×1080 (responsive below)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design tokens (single source of truth)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-bg-page: #f6f6f6;
+  --color-bg-form: #f8f8f8;
+  --color-bg-input: rgba(64, 106, 253, 0.08);
+  --color-bg-input-focus: #f5f5f5;
+  --color-border-input: transparent;
+  --color-border-focus: #406afd;
+  --color-text-heading: #000;
+  --color-text-body: #000;
+  --color-text-muted: rgba(0, 0, 0, 0.4);
+  --color-text-focus-label: #406afd;
+  --color-link: #406afd;
+  --color-btn-primary-bg: #406afd;
+  --color-btn-primary-text: #fff;
+
+  /* Typography */
+  --font-family: "Ubuntu", sans-serif;
+  --font-size-kicker: 20px;
+  --font-size-title: 56px;
+  --font-size-label: 12px;
+  --font-size-input: 18px;
+  --font-size-footer: 20px;
+  --font-size-btn: 18px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 1;
+  --line-height-title: 1.03;
+  --line-height-body: 1.4;
+
+  /* Spacing scale */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-16: 64px;
+  --space-form-top: clamp(120px, 20vh, 223px);
+  --space-form-left: clamp(24px, 8vw, 112px);
+
+  /* Layout (1440×1080) */
+  --form-width: 525px;
+  --form-gap-rows: 20px;
+  --form-gap-split: 20px;
+  --form-footer-margin: 40px;
+
+  /* Borders & radius */
+  --radius-input: 12px;
+  --radius-btn: 100px;
+  --border-width-focus: 2px;
+
+  /* Motion */
+  --ease: ease;
+  --duration: 0.2s;
+}
+
+/* --------------------------------------------------------------------------
+   Base & layout
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-body);
+  background-color: var(--color-bg-page);
+  min-height: 100%;
+  min-height: 100vh;
+}
+
+/* Fixed viewport for design fidelity; remove or override for full responsiveness */
+@media (min-width: 1440px) {
+  body {
+    min-height: 1080px;
+  }
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 1080px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  min-width: 400px;
+  height: 100%;
+  background-image: url("../assets/images/Group 272.png");
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Form section (left content)
+   -------------------------------------------------------------------------- */
+.form-section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--form-width);
+  margin-top: var(--space-form-top);
+  margin-left: var(--space-form-left);
+  padding-right: var(--space-6);
+}
+
+.form-section__header {
+  margin-bottom: var(--space-16);
+}
+
+.form-section__kicker {
+  font-size: var(--font-size-kicker);
+  font-weight: var(--font-weight-bold);
+  line-height: 28px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.form-section__title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
+  color: var(--color-text-heading);
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Form layout
+   -------------------------------------------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__row {
+  margin-bottom: var(--form-gap-rows);
+}
+
+.form__row--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--form-gap-split);
+}
+
+.form__footer {
+  font-size: var(--font-size-footer);
+  font-weight: var(--font-weight-bold);
+  line-height: 28px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--form-footer-margin);
+}
+
+.form__link {
+  color: var(--color-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form__link:hover {
+  text-decoration: none;
+}
+
+.form__link:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Field (input + label + icon)
+   -------------------------------------------------------------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.field__label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-text-muted);
+  transition: color var(--duration) var(--ease);
+}
+
+.field__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background-color: var(--color-bg-input);
+  border: var(--border-width-focus) solid var(--color-border-input);
+  border-radius: var(--radius-input);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.field__input-wrap:focus-within {
+  border-color: var(--color-border-focus);
+  background-color: var(--color-bg-input-focus);
+}
+
+.field__input-wrap:focus-within .field__label {
+  color: var(--color-text-focus-label);
+  font-weight: var(--font-weight-medium);
+}
+
+.field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: var(--font-size-input);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-body);
+}
+
+.field__input::placeholder {
+  color: var(--color-text-body);
+  font-weight: var(--font-weight-bold);
+}
+
+.field__input:focus {
+  outline: none;
+}
+
+/* Password: letter-spacing only when value present (dots visible) */
+.field__input--password:not(:placeholder-shown) {
+  letter-spacing: 0.2em;
+}
+
+.field__icon,
+.field__action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.field__icon img,
+.field__action img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.field__action {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+}
+
+.field__action:hover {
+  opacity: 0.8;
+}
+
+.field__action:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Button
+   -------------------------------------------------------------------------- */
+.btn {
+  font-family: var(--font-family);
+  font-size: var(--font-size-btn);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 20px var(--space-4);
+  transition: opacity var(--duration) var(--ease),
+    transform 0.1s var(--ease);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-text-heading);
+  outline-offset: 2px;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn--primary {
+  width: 100%;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  opacity: 0.92;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive: stack name fields, adjust spacing
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .form__row--split {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section__title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .form-section {
+    margin-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --form-width: 100%;
+  }
+
+  .form-section {
+    margin-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}

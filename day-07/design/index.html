@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create new account — BigDevSoon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="design.css" />
+</head>
+
+<body>
+  <div class="page" role="main">
+    <div class="page__bg" aria-hidden="true"></div>
+
+    <div class="form-section">
+      <header class="form-section__header">
+        <p class="form-section__kicker">Start for free</p>
+        <h1 class="form-section__title">Create new account</h1>
+      </header>
+
+      <form class="form" action="#" method="post" novalidate>
+        <div class="form__row form__row--split">
+          <div class="field">
+            <label class="field__label" for="first-name">First name</label>
+            <span class="field__input-wrap">
+              <input
+                class="field__input"
+                type="text"
+                id="first-name"
+                name="first_name"
+                placeholder="John"
+                autocomplete="given-name"
+              />
+              <span class="field__icon field__icon--user" aria-hidden="true">
+                <img src="../assets/icons/bxs_id-card.png" alt="" width="24" height="24" />
+              </span>
+            </span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="last-name">Last name</label>
+            <span class="field__input-wrap">
+              <input
+                class="field__input"
+                type="text"
+                id="last-name"
+                name="last_name"
+                placeholder="Doe"
+                autocomplete="family-name"
+              />
+              <span class="field__icon field__icon--user" aria-hidden="true">
+                <img src="../assets/icons/bxs_id-card.png" alt="" width="24" height="24" />
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="email">Email</label>
+            <span class="field__input-wrap">
+              <input
+                class="field__input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john.doe@email.com"
+                autocomplete="email"
+                inputmode="email"
+              />
+              <span class="field__icon" aria-hidden="true">
+                <img src="../assets/icons/ic_round-email.png" alt="" width="24" height="24" />
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="password">Password</label>
+            <span class="field__input-wrap">
+              <input
+                class="field__input field__input--password"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="new-password"
+                              />
+              <button
+                type="button"
+                class="field__action"
+                id="password-toggle"
+                aria-label="Show password"
+                aria-pressed="false"
+                title="Show password"
+              >
+                <img src="../assets/icons/iconamoon_eye-fill.png" alt="" width="24" height="24" />
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <p class="form__footer">
+          Already have an account?
+          <a class="form__link" href="#">Sign In</a>
+        </p>
+
+        <button type="submit" class="btn btn--primary">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Password visibility toggle (progressive enhancement)
+    (function () {
+      var btn = document.getElementById('password-toggle');
+      var input = document.getElementById('password');
+      if (!btn || !input) return;
+      btn.addEventListener('click', function () {
+        var isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+        btn.setAttribute('aria-pressed', isPassword ? 'true' : 'false');
+        btn.title = isPassword ? 'Hide password' : 'Show password';
+      });
+    })();
+  </script>
+</body>
+
+</html>
